@@ -1,3 +1,9 @@
 ---
 # Remi repo PHP version
 remi_repo: remi-php74
+
+# List of PHP packages
+php_packages:
+  - php
+  - php-cli
+  - php-common

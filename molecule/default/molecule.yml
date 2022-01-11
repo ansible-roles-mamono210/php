@@ -12,6 +12,22 @@ provisioner:
   config_options:
     defaults:
       callbacks_enabled: ansible.posix.profile_tasks
+  connection_options:
+    php_packages:
+      - php
+      - php-cli
+      - php-common
+      - php-devel
+      - php-fpm
+      - php-gd
+      - php-ldap
+      - php-mbstring
+      - php-opcache
+      - php-pdo
+      - php-pear
+      - php-pecl-apcu
+      - php-xml
+      - php-xmlrpc
 verifier:
   name: ansible
 scenario:

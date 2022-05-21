@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: Prepare
   hosts: all
   become: true
   gather_facts: true
@@ -8,4 +8,3 @@
   roles:
     - geerlingguy.repo-epel
     - geerlingguy.repo-remi
-    - php

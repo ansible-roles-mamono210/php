@@ -1,0 +1,42 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: ${MOLECULE_IMAGE}
+    pre_build_image: true
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      callbacks_enabled: ansible.posix.profile_tasks
+  connection_options:
+    php_packages:
+      - php
+      - php-cli
+      - php-common
+      - php-devel
+      - php-fpm
+      - php-gd
+      - php-ldap
+      - php-mbstring
+      - php-opcache
+      - php-pdo
+      - php-pear
+      - php-pecl-apcu
+      - php-xml
+      - php-xmlrpc
+    remi_repo: remi-php80
+verifier:
+  name: ansible
+scenario:
+  test_sequence:
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - verify

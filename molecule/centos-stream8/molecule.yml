@@ -15,19 +15,13 @@ provisioner:
   connection_options:
     php_packages:
       - php
-      - php-cli
-      - php-common
       - php-devel
-      - php-fpm
       - php-gd
       - php-ldap
-      - php-mbstring
-      - php-opcache
-      - php-pdo
       - php-pear
       - php-pecl-apcu
-      - php-xml
       - php-xmlrpc
+    remi_repo: php:remi-8.1
 verifier:
   name: ansible
 scenario:
@@ -35,6 +29,7 @@ scenario:
     - dependency
     - syntax
     - create
+    - prepare
     - converge
     - idempotence
     - verify

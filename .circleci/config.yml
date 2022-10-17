@@ -2,7 +2,7 @@
 jobs:
   ansible-lint:
     docker:
-      - image: ghcr.io/docker-hub-tm/circleci-executors/ansible-lint:latest
+      - image: ghcr.io/docker-images-mamono210/circleci-executors/ansible-lint:latest
     resource_class: small
     steps:
       - checkout
@@ -51,7 +51,7 @@ jobs:
             cd << parameters.checkout-path >>
 
             docker run --rm -it \
-            -e MOLECULE_IMAGE="ghcr.io/docker-hub-tm/ansible-test/<< parameters.molecule-test-image >>:latest" \
+            -e MOLECULE_IMAGE="ghcr.io/docker-images-mamono210/ansible-test/<< parameters.molecule-test-image >>:latest" \
             -v "$(pwd)":/tmp/$(basename "${PWD}"):ro \
             -v /usr/bin/docker:/usr/bin/docker \
             -v /var/run/docker.sock:/var/run/docker.sock \
@@ -75,7 +75,7 @@ jobs:
             molecule --version
   yamllint:
     docker:
-      - image: ghcr.io/docker-hub-tm/circleci-executors/yamllint:latest
+      - image: ghcr.io/docker-images-mamono210/circleci-executors/yamllint:latest
     resource_class: small
     steps:
       - checkout
@@ -91,7 +91,7 @@ jobs:
             | GREP_COLORS='mt=01;33' egrep --color=always 'yamllint.* '
   trailing-whitespace:
     docker:
-      - image: ghcr.io/docker-hub-tm/circleci-executors/trailing-whitespace:latest
+      - image: ghcr.io/docker-images-mamono210/circleci-executors/trailing-whitespace:latest
     resource_class: small
     steps:
       - checkout
@@ -118,7 +118,7 @@ workflows:
               checkout-path:
                 - 'php'
               molecule-executor-image:
-                - 'ghcr.io/docker-hub-tm/circleci-executors_molecule/molecule:docker'
+                - 'ghcr.io/docker-images-mamono210/circleci-executors_molecule/molecule:docker'
               molecule-test-image:
                 - 'centos7'
                 - 'centos-stream8'

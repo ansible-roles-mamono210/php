@@ -21,7 +21,7 @@ provisioner:
       - php-pear
       - php-pecl-apcu
       - php-xmlrpc
-    remi_repo: php:remi-8.1
+    remi_repo: php:remi-8.2
 verifier:
   name: ansible
 scenario:

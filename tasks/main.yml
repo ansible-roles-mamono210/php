@@ -1,34 +1,18 @@
 ---
-- name: Enable dnf php module / CentOS8
+- name: Enable dnf php module
   ansible.builtin.command: '{{ item }}'
   changed_when: false
   loop:
     - dnf module reset php -y
     - "dnf module enable {{ remi_repo }} -y"
-  when:
-    - ansible_distribution == "CentOS"
-    - ansible_distribution_major_version == "8"
 
-- name: Install PHP and the packages / CentOS8
+- name: Install PHP and the packages
   ansible.builtin.dnf:
     name: '{{ item }}'
     state: present
   loop: '{{ php_packages }}'
-  when:
-    - ansible_distribution == "CentOS"
-    - ansible_distribution_major_version == "8"
 
-- name: Install PHP and the packages / CentOS 7
-  ansible.builtin.yum:
-    name: '{{ item }}'
-    enablerepo: '{{ remi_repo }}'
-    state: present
-  loop: '{{ php_packages }}'
-  when:
-    - ansible_distribution == "CentOS"
-    - ansible_distribution_major_version == "7"
-
-- name: Set timezone to Asia/Tokyo
+- name: Set PHP timezone to Asia/Tokyo
   community.general.ini_file:
     dest: /etc/php.ini
     section: Date

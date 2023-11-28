@@ -1,6 +1,6 @@
 ---
 # Remi repo PHP version
-remi_repo: remi-php81
+remi_repo: remi-php82
 
 # List of PHP packages
 php_packages:

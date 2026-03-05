@@ -3,7 +3,7 @@
 Role Description
 =========
 
-Installs [PHP](https://www.php.net) for Linux.
+Installs [PHP](https://www.php.net) for CentOS Stream.
 
 Requirements
 ------------
